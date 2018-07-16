@@ -1,6 +1,6 @@
 Introduction
 ---
-Thanks for taking the time to complete this backend technical assessment. We will be focusing on code quality (reusability, readability, maintainability, etc.) and your eye for detail. Feel free to add libraries and edit the HTML files as required. Bonus points if SASS/LESS is used. 
+Thanks for taking the time to complete this backend technical assessment. We will be focusing on code quality (reusability, readability, maintainability, etc.). You will be required to setup a Magento 2 Instance to test the modules and be flexible to work on any instance without conflicts (for code reusability)
 
 *Estimated Time: 3h* 
 
