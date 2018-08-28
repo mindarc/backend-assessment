@@ -1,0 +1,15 @@
+<?php 
+if(is_object($this->getCountryCode()))
+{
+	$countryName = $this->getCountryCode()->geoplugin_countryName;
+	$countryCode = $this->getCountryCode()->geoplugin_countryCode;
+	echo "Your Country: ".$countryName." (".$countryCode.")";
+	if(isset($countryCode) && $countryCode!='')
+	{
+		if($countryCode=='US'):
+			echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('country_block_us')->toHtml();
+		else:
+			echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('country_block_global')->toHtml();
+		endif;
+	}
+}

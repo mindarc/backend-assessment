@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="product.info.main">
+		  <container name="product.info.country" label="Product info country container" htmlTag="div" htmlClass="product-info-country" before="-">
+			<block class="MyCompany\IpRestrict\Block\Product\CountryCode" name="iprestrict_country" cacheable="false" template="MyCompany_IpRestrict::product/country.phtml" before="product.info.price"/>
+		  </container>
+		</referenceContainer>
+    </body>
+</page>
