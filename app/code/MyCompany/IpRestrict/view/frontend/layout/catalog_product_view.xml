@@ -9,7 +9,7 @@
     <body>
         <referenceContainer name="product.info.main">
 		  <container name="product.info.country" label="Product info country container" htmlTag="div" htmlClass="product-info-country" before="-">
-			<block class="MyCompany\IpRestrict\Block\Product\CountryCode" name="iprestrict_country" template="MyCompany_IpRestrict::product/country.phtml" before="product.info.price"/>
+			<block class="MyCompany\IpRestrict\Block\Product\CountryCode" name="iprestrict_country" cacheable="false" template="MyCompany_IpRestrict::product/country.phtml" before="product.info.price"/>
 		  </container>
 		</referenceContainer>
     </body>
