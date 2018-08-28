@@ -1,0 +1,7 @@
+<?php 
+if(is_object($this->getCountryCode()))
+{
+	$countryName = $this->getCountryCode()->geoplugin_countryName;
+	$countryCode = $this->getCountryCode()->geoplugin_countryCode;
+	echo "Your Country: ".$countryName." (".$countryCode.")";
+}
