@@ -14,19 +14,21 @@
 
 		private $title, $description, $condition;
 
-		private $productCollection, $store, $fixerio;
+		private $productCollection, $store, $fixerio, $logger;
 
 		public function __construct(
 			\Magento\Backend\Block\Template\Context $context,		
 			\Magento\Catalog\Model\ResourceModel\Product\CollectionFactory $productCollection,
 			\Magento\Store\Model\StoreManagerInterface $store,
 			\Kai\Googlefeed\Model\Fixerio $fixerio,
+			\Psr\Log\LoggerInterface $logger,
 			array $data = []
 		)
 		{	
 			$this->productCollection= $productCollection;
 			$this->store = $store;
 			$this->fixerio = $fixerio;
+			$this->logger = $logger;
 
 			$this->title = __("Google Product Feed");
 			$this->description =  __("Just a test feed.");
@@ -97,7 +99,13 @@
 						$this->store->getStore()->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA) . 'catalog/product' . $product->getImage()
 					));
 				} catch (\Exception $e) {
-					
+					$this->logger->error($e->getMessage());
+
+					$imageHelper = \Magento\Framework\App\ObjectManager::getInstance()->get(\Magento\Catalog\Helper\Image::class);
+					$item->appendChild($doc->createElement(
+						'g:image_link',
+						 $imageHelper->getDefaultPlaceholderUrl('image')
+					));
 				};
 
 			}
