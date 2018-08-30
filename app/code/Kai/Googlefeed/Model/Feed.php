@@ -12,9 +12,19 @@
 	class Feed 
 	{
 
-		private $title, $description, $condition;
+		private $title;
+		
+		private $description;
+		
+		private $condition;
 
-		private $productCollection, $store, $fixerio, $logger;
+		private $productCollection;
+		
+		private $store; 
+		
+		private $fixerio;
+		
+		private $logger;
 
 		public function __construct(
 			\Magento\Backend\Block\Template\Context $context,		

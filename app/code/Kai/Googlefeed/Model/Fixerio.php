@@ -15,7 +15,13 @@
 
 		const FIXERIO_ACCESS_KEY = 'd8e49f3516f3481b959a80bd05b7194b'; //ideally should be in enviroment variable
 
-		private $base, $api_base, $converted, $rates;
+		private $base;
+		
+		private $api_base; 
+		
+		private $converted;
+		
+		private $rates;
 
 		private $httpClient;
 
