@@ -14,17 +14,19 @@
 
 		private $title, $description, $condition;
 
-		private $productCollection, $store;
+		private $productCollection, $store, $fixerio;
 
 		public function __construct(
 	        \Magento\Backend\Block\Template\Context $context,        
 	        \Magento\Catalog\Model\ResourceModel\Product\CollectionFactory $productCollection,
 	        \Magento\Store\Model\StoreManagerInterface $store,
+	        \Kai\Googlefeed\Model\Fixerio $fixerio,
 	        array $data = []
 	    )
 	    {    
 	        $this->productCollection= $productCollection;
 	        $this->store = $store;
+	        $this->fixerio = $fixerio;
 
 	        $this->title = __("Google Product Feed");
 	        $this->description =  __("Just a test feed.");
@@ -85,6 +87,12 @@
 	            $price = $product->getPriceInfo()->getPrice('final_price')->getAmount()->getValue();
 
 	            $item->appendChild($doc->createElement('g:price', $price));
+
+				$cprice = $this->fixerio->convert($price);
+				if ( $cprice )
+				{
+					$item->appendChild($doc->createElement('g:converted_price', $cprice));
+				}
 
 	            try {
 	                $item->appendChild($doc->createElement(
