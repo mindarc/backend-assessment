@@ -12,6 +12,8 @@ namespace Kai\GeoIP\Block;
  */
 class Display extends \Magento\Framework\View\Element\Template
 {
+	const USA = 'US';
+
 	private $geoHandler;
 
 	private $countryCode;
@@ -41,6 +43,17 @@ class Display extends \Magento\Framework\View\Element\Template
 	}
 
 	private function setCurrentBlockTemplate(){
-		$this->setTemplate('Kai_GeoIP::global.phtml');
+
+		$this->countryCode = $this->geoHandler->getUserCountryCode();
+	
+		switch ($this->countryCode) {
+			case self::USA:
+				$this->setTemplate('Kai_GeoIP::us.phtml');
+				break;
+			
+			default:
+				$this->setTemplate('Kai_GeoIP::global.phtml');
+				break;
+		}
 	}
 }
