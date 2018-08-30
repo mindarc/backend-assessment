@@ -73,9 +73,6 @@
 		private function createProductXml($productCollection, $channel, $doc){
 			foreach ($productCollection as $product) {
 
-				++$counter;
-				if ($counter == 5) break;
-
 	            $item = $channel->appendChild($doc->createElement('item'));
 
 	            $item->appendChild($doc->createElement('title', $product->getName()));
