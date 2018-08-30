@@ -1,7 +1,0 @@
-<?xml version="1.0"?>
-<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
-    <menu>
-        <add id="Kai_Googlefeed" title="K Googlefeed" module="Kai_Googlefeed" sortOrder="500" dependsOnModule="Kai_Googlefeed" resource="Kai_Googlefeed::contacts"/>
-        <add id="Kai_Googlefeed::index" title="Generate feed" module="Kai_Googlefeed" action="kaigooglefeed/index" parent="Kai_Googlefeed" sortOrder="20" dependsOnModule="Kai_Googlefeed" resource="Kai_Googlefeed::contacts"/>
-    </menu>
-</config>

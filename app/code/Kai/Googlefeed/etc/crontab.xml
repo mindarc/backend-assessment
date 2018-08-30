@@ -4,11 +4,11 @@
 
 <group id="default">
 
-    <job name="generate_googlefeed_cronjob" instance="Kai\Googlefeed\Cron\RunFeed" method="execute">
+	<job name="generate_googlefeed_cronjob" instance="Kai\Googlefeed\Cron\RunFeed" method="execute">
 
-        <schedule>* 0 * * *</schedule>
+		<schedule>* 0 * * *</schedule>
 
-    </job>
+	</job>
 
 </group>
 

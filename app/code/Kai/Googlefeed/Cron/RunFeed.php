@@ -18,7 +18,8 @@ class RunFeed {
 
   public function __construct(
     \Psr\Log\LoggerInterface $logger,
-    \Kai\Googlefeed\Model\Feed $feed) {
+    \Kai\Googlefeed\Model\Feed $feed
+  ) {
 
     $this->logger = $logger;
     $this->feed = $feed;
@@ -32,7 +33,7 @@ class RunFeed {
    * @return string XML output
    */
   public function execute() {
-    $this->logger->info('Google Feed Cron Start');
+	  $this->logger->info('Google Feed Cron Start');
     try {
       $_objectManager = \Magento\Framework\App\ObjectManager::getInstance();
 
@@ -49,7 +50,6 @@ class RunFeed {
     }
 
     $this->logger->info('Google Feed Cron End');
-
+ 
   }
-
 }
