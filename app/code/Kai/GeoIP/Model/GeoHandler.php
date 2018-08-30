@@ -31,7 +31,7 @@ class GeoHandler
 	/**
 	 * Get The location of the current user
 	 *
-	 * @return string country code
+	 * @return string country code in ISO 3166-A2 format
 	 */
 	public function getUserCountryCode(){
 
@@ -52,7 +52,12 @@ class GeoHandler
 		}	
 
 	}
-
+	
+	/**
+	 * Return IP Address of user
+	 *
+	 * @return string IP address
+	 */
 	public function getIPAddress() {
 		$ipaddress = '';
 		
