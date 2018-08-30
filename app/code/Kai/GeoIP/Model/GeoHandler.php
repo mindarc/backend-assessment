@@ -15,7 +15,9 @@ class GeoHandler
 
 	const IPSTACK_API_KEY = 'bf3b3ee9a0affbce479f174fd1a42041'; //this should be enviroment variable but.
 
-	private $httpClient, $logger;
+	private $httpClient;
+	
+	private $logger;
 
 	public function __construct( 
 		\Magento\Framework\HTTP\Client\Curl $curl,

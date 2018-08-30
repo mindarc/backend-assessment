@@ -14,7 +14,9 @@ namespace Kai\GeoIP\Plugin;
  */
 class BlockCountry
 {
-	private $geoHandler, $logger;
+	private $geoHandler;
+	
+	private $logger;
 
 	private $restrictedCountries;
 

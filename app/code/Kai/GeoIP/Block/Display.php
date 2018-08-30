@@ -48,12 +48,12 @@ class Display extends \Magento\Framework\View\Element\Template
 	
 		switch ($this->countryCode) {
 			case self::USA:
-	$this->setTemplate('Kai_GeoIP::us.phtml');
-	break;
+				$this->setTemplate('Kai_GeoIP::us.phtml');
+				break;
 	
 			default:
-	$this->setTemplate('Kai_GeoIP::global.phtml');
-	break;
+				$this->setTemplate('Kai_GeoIP::global.phtml');
+				break;
 		}
 	}
 }
