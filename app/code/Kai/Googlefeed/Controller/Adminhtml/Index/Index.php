@@ -11,21 +11,21 @@ namespace Kai\Googlefeed\Controller\Adminhtml\Index;
  */
 class Index extends \Magento\Backend\App\Action
 {
-	
-	private $_feed;
+    
+    private $_feed;
 
-	public function __construct(
-		\Magento\Backend\App\Action\Context $context,
-		\Kai\Googlefeed\Model\Feed $feed
-	) {
-		$this->_feed = $feed;
-		parent::__construct($context);
-	}
-	
-	public function execute()
-	{
-		header('Content-Type: application/xml; charset=utf-8');
-		echo $this->_feed->generateFeed();
+    public function __construct(
+        \Magento\Backend\App\Action\Context $context,
+        \Kai\Googlefeed\Model\Feed $feed
+    ) {
+        $this->_feed = $feed;
+        parent::__construct($context);
+    }
+    
+    public function execute()
+    {
+        header('Content-Type: application/xml; charset=utf-8');
+        echo $this->_feed->generateFeed();
 
-	}
+    }
 }
