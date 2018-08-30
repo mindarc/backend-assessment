@@ -12,48 +12,48 @@ namespace Kai\GeoIP\Block;
  */
 class Display extends \Magento\Framework\View\Element\Template
 {
-	const USA = 'US';
+    const USA = 'US';
 
-	private $geoHandler;
+    private $geoHandler;
 
-	private $countryCode;
+    private $countryCode;
 
-	public function __construct(
-		\Magento\Framework\View\Element\Template\Context $context,
-		\Kai\GeoIP\Model\GeoHandler $geoHandler
-	)
-	{
-		$this->geoHandler = $geoHandler;
+    public function __construct(
+        \Magento\Framework\View\Element\Template\Context $context,
+        \Kai\GeoIP\Model\GeoHandler $geoHandler
+    )
+    {
+        $this->geoHandler = $geoHandler;
 
-		$this->setCurrentBlockTemplate();
+        $this->setCurrentBlockTemplate();
 
-		parent::__construct($context);
-	}
+        parent::__construct($context);
+    }
 
-	public function getCountryCode(){
-		return $this->countryCode;
-	}
+    public function getCountryCode(){
+        return $this->countryCode;
+    }
 
-	protected  function _toHtml()
-	{
-	 if (!$this->getTemplate()) {
-		 return __('Nothing to Render');
-	 }
-	 return $this->fetchView($this->getTemplateFile());
-	}
+    protected  function _toHtml()
+    {
+     if (!$this->getTemplate()) {
+         return __('Nothing to Render');
+     }
+     return $this->fetchView($this->getTemplateFile());
+    }
 
-	private function setCurrentBlockTemplate(){
+    private function setCurrentBlockTemplate(){
 
-		$this->countryCode = $this->geoHandler->getUserCountryCode();
-	
-		switch ($this->countryCode) {
-			case self::USA:
-				$this->setTemplate('Kai_GeoIP::us.phtml');
-				break;
-	
-			default:
-				$this->setTemplate('Kai_GeoIP::global.phtml');
-				break;
-		}
-	}
+        $this->countryCode = $this->geoHandler->getUserCountryCode();
+    
+        switch ($this->countryCode) {
+            case self::USA:
+                $this->setTemplate('Kai_GeoIP::us.phtml');
+                break;
+    
+            default:
+                $this->setTemplate('Kai_GeoIP::global.phtml');
+                break;
+        }
+    }
 }

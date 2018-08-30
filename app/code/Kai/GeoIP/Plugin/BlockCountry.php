@@ -14,40 +14,40 @@ namespace Kai\GeoIP\Plugin;
  */
 class BlockCountry
 {
-	private $geoHandler;
-	
-	private $logger;
+    private $geoHandler;
+    
+    private $logger;
 
-	private $restrictedCountries;
+    private $restrictedCountries;
 
-	public function __construct(
-		\Kai\GeoIP\Model\GeoHandler $geoHandler,
-		\Psr\Log\LoggerInterface $logger
-	){
-		$this->geoHandler = $geoHandler;
-		$this->logger = $logger;
+    public function __construct(
+        \Kai\GeoIP\Model\GeoHandler $geoHandler,
+        \Psr\Log\LoggerInterface $logger
+    ){
+        $this->geoHandler = $geoHandler;
+        $this->logger = $logger;
 
-		$this->restrictedCountries = ['RU','CN'];
-	}
+        $this->restrictedCountries = ['RU','CN'];
+    }
 
-	
-	public function aroundDispatch(
-		\Magento\Framework\App\FrontControllerInterface	$subject,
-		callable										$proceed,
-		\Magento\Framework\App\RequestInterface			$request
-	) {
-		
-		$countryCode = $this->geoHandler->getUserCountryCode();
+    
+    public function aroundDispatch(
+        \Magento\Framework\App\FrontControllerInterface $subject,
+        callable $proceed,
+        \Magento\Framework\App\RequestInterface $request
+    ) {
+        
+        $countryCode = $this->geoHandler->getUserCountryCode();
 
-		if ( in_array($countryCode, $this->restrictedCountries) )
-		{
-			$this->logger->info(__('User barred from site'.$this->geoHandler->getIPAddress()));
+        if ( in_array($countryCode, $this->restrictedCountries) )
+        {
+            $this->logger->info(__('User barred from site'.$this->geoHandler->getIPAddress()));
 
-			throw new \Exception(__('You are blocked from accessing the site'));
-		} 
+            throw new \Exception(__('You are blocked from accessing the site'));
+        } 
 
-		return $proceed($request);
-		
-	}
+        return $proceed($request);
+        
+    }
 
 }
