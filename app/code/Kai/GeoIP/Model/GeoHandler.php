@@ -29,8 +29,8 @@ class GeoHandler
 	/**
 	 * Get The location of the current user
 	 *
-     * @return string country code
-     */
+	 * @return string country code
+	 */
 	public function getUserCountryCode(){
 
 		$ipAddress = $this->getIPAddress();
@@ -54,24 +54,24 @@ class GeoHandler
 	public function getIPAddress() {
 		$ipaddress = '';
 		
-	    if (array_key_exists('HTTP_CLIENT_IP', $_SERVER))
-	        $ipaddress = $_SERVER['HTTP_CLIENT_IP'];
-	    else if (array_key_exists('HTTP_X_FORWARDED_FOR', $_SERVER))
-	        $ipaddress = $_SERVER['HTTP_X_FORWARDED_FOR'];
-	    else if (array_key_exists('HTTP_X_FORWARDED', $_SERVER))
-	        $ipaddress = $_SERVER['HTTP_X_FORWARDED'];
-	    else if (array_key_exists('HTTP_FORWARDED_FOR', $_SERVER))
-	        $ipaddress = $_SERVER['HTTP_FORWARDED_FOR'];
-	    else if (array_key_exists('HTTP_FORWARDED', $_SERVER))
-	        $ipaddress = $_SERVER['HTTP_FORWARDED'];
-	    else if (array_key_exists('REMOTE_ADDR', $_SERVER))
-	        $ipaddress = $_SERVER['REMOTE_ADDR'];
+	 if (array_key_exists('HTTP_CLIENT_IP', $_SERVER))
+		 $ipaddress = $_SERVER['HTTP_CLIENT_IP'];
+	 else if (array_key_exists('HTTP_X_FORWARDED_FOR', $_SERVER))
+		 $ipaddress = $_SERVER['HTTP_X_FORWARDED_FOR'];
+	 else if (array_key_exists('HTTP_X_FORWARDED', $_SERVER))
+		 $ipaddress = $_SERVER['HTTP_X_FORWARDED'];
+	 else if (array_key_exists('HTTP_FORWARDED_FOR', $_SERVER))
+		 $ipaddress = $_SERVER['HTTP_FORWARDED_FOR'];
+	 else if (array_key_exists('HTTP_FORWARDED', $_SERVER))
+		 $ipaddress = $_SERVER['HTTP_FORWARDED'];
+	 else if (array_key_exists('REMOTE_ADDR', $_SERVER))
+		 $ipaddress = $_SERVER['REMOTE_ADDR'];
 
-	    return $ipaddress;
+	 return $ipaddress;
 	}
 
 	private function buildParameters() {
-		return [			
+		return [	
 			'access_key' => self::IPSTACK_API_KEY,
 			'format' => '1',
 		];

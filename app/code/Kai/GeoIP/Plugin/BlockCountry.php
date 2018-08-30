@@ -2,7 +2,6 @@
 
 namespace Kai\GeoIP\Plugin;
 
-
 /**
  * Plugin BlockCountry
  *
