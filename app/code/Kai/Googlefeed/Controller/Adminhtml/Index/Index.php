@@ -12,20 +12,20 @@ namespace Kai\Googlefeed\Controller\Adminhtml\Index;
 class Index extends \Magento\Backend\App\Action
 {
     
-    private $_feed;
+    private $feed;
 
     public function __construct(
         \Magento\Backend\App\Action\Context $context,
         \Kai\Googlefeed\Model\Feed $feed
     ) {
-        $this->_feed = $feed;
+        $this->feed = $feed;
         parent::__construct($context);
     }
     
     public function execute()
     {
         header('Content-Type: application/xml; charset=utf-8');
-        echo $this->_feed->generateFeed();
+        echo $this->feed->generateFeed();
 
     }
 }
