@@ -2,10 +2,9 @@
 namespace Kai\GeoIP\Block;
 
 /**
- * class GeoHandler
+ * class Display
  *
- * Does the IP checks, geolocation checks, and heavy lifting, requires http://ipstack.com API
- * Functions are pretty self explainatory
+ * Block class to display relevant templates 
  *
  * @author Cheng Shea kai <gabazoo@gmail.com>
  * @see https://github.com/bugcskai/
@@ -25,8 +24,6 @@ class Display extends \Magento\Framework\View\Element\Template
     {
         $this->geoHandler = $geoHandler;
 
-        $this->setCurrentBlockTemplate();
-
         parent::__construct($context);
     }
 
@@ -36,12 +33,20 @@ class Display extends \Magento\Framework\View\Element\Template
 
     protected  function _toHtml()
     {
-     if (!$this->getTemplate()) {
-         return __('Nothing to Render');
-     }
-     return $this->fetchView($this->getTemplateFile());
+
+        $this->setCurrentBlockTemplate();
+        if (!$this->getTemplate()) {
+            return __('Nothing to Render');
+        }
+        
+        return $this->fetchView($this->getTemplateFile());
     }
 
+    /**
+     * Check the Country code and assign template
+     *
+     * @return void
+     */
     private function setCurrentBlockTemplate(){
 
         $this->countryCode = $this->geoHandler->getUserCountryCode();
