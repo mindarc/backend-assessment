@@ -87,7 +87,8 @@ class Feed
 
             $item = $channel->appendChild($doc->createElement('item'));
 
-            $item->appendChild($doc->createElement('title', $product->getName()));
+            $title = $item->appendChild($doc->createElement('title'));
+            $title->appendChild($doc->createCDATASection($product->getName()));
             $desc = $item->appendChild($doc->createElement('description'));
             $desc->appendChild($doc->createCDATASection($product->getDescription()));
             $item->appendChild($doc->createElement('g:link', $product->getUrlInStore()));
