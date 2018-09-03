@@ -13,8 +13,6 @@ class Fixerio
 {
     const FIXERIO_API_ENDPOINT = 'http://data.fixer.io/api/latest?';
 
-    const FIXERIO_ACCESS_KEY = 'd8e49f3516f3481b959a80bd05b7194b'; //ideally should be in enviroment variable
-
     private $base_currency;
     
     private $converted_currency;
@@ -25,15 +23,19 @@ class Fixerio
 
     private $httpClient;
 
+    private $scopeConfig;
+
     public function __construct(
         \Magento\Framework\HTTP\Client\Curl $curl,
-        \Psr\Log\LoggerInterface $logger
+        \Psr\Log\LoggerInterface $logger,
+        \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig
     )
     {
         $this->logger = $logger;
         $this->httpClient = $curl;
         $this->converted_currency = 'USD';
         $this->base_currency = 'AUD';
+        $this->scopeConfig = $scopeConfig;
     }
 
 
@@ -59,6 +61,9 @@ class Fixerio
         try {
             $rates = $this->getFixerioRates();
         } catch (\Exception $e) {
+            $this->logger->error(__('Problem with Fixerio'));
+            $this->logger->error($e->getMessage());
+
             return 0; //stop converting.
         }
 
@@ -100,9 +105,6 @@ class Fixerio
             return $this->rates;
 
         } catch (\Exception $e) {
-            $this->logger->error(__('Problem with Fixerio'));
-            $this->logger->error($e->getMessage());
-
             throw $e;
         }    
     }
@@ -116,8 +118,10 @@ class Fixerio
     {
         $symbols = implode(',', [ $this->base_currency, $this->converted_currency ]);
 
+        $api_key = $this->scopeConfig->getValue( 'googlefeed/general/googlefeedapikey', \Magento\Store\Model\ScopeInterface::SCOPE_STORE );
+
         return [
-            "access_key" => self::FIXERIO_ACCESS_KEY,
+            "access_key" => $api_key,
             "format" => 1,
         ];
     }

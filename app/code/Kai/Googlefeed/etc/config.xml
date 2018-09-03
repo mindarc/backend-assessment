@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <googlefeed>
+            <general>
+                <googlefeedapikey>d8e49f3516f3481b959a80bd05b7194b</googlefeedapikey>
+            </general>
+        </googlefeed>
+    </default>
+</config>
