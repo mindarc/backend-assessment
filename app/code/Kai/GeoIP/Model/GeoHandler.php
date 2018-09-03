@@ -13,18 +13,20 @@ class GeoHandler
 {
     const IPSTACK_URL = 'http://api.ipstack.com/';
 
-    const IPSTACK_API_KEY = 'bf3b3ee9a0affbce479f174fd1a42041'; //this should be enviroment variable but.
-
     private $httpClient;
+
+    private $scopeConfig;
     
     private $logger;
 
     public function __construct( 
         \Magento\Framework\HTTP\Client\Curl $curl,
-        \Psr\Log\LoggerInterface $logger
+        \Psr\Log\LoggerInterface $logger,
+        \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig
     ){
         $this->httpClient = $curl;
         $this->logger = $logger;
+        $this->scopeConfig = $scopeConfig;
     }
 
 
@@ -78,11 +80,12 @@ class GeoHandler
     }
 
     private function buildParameters() {
+        $api_key = $this->scopeConfig->getValue( 'geoip/general/geoapikey', \Magento\Store\Model\ScopeInterface::SCOPE_STORE );
+
         return [    
-            'access_key' => self::IPSTACK_API_KEY,
+            'access_key' => $api_key,
             'format' => '1',
         ];
     }
-
 
 }
