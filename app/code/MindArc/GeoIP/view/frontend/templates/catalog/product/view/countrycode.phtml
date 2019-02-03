@@ -1,0 +1,9 @@
+<?php
+$block->getChildHtml('countrycode');
+$blockId = $block->getBlockID();
+try {
+    echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId($blockId)->toHtml();
+} catch (Exception $e) {
+    throw new Exception('Block Id "' . $blockId . '" not found, please create a new one from admin panel');
+}
+?>
