@@ -4,7 +4,7 @@
     <body>
         <referenceContainer name="product.info.media">
             <block class="MindArc\GeoIP\Block\Catalog\Product\View\CountryCode" name="product.view.countrycode"
-                   template="MindArc_GeoIP::catalog/product/view/countrycode.phtml"/>
+                   template="MindArc_GeoIP::catalog/product/view/countrycode.phtml" cacheable="false"/>
         </referenceContainer>
     </body>
 </page>
