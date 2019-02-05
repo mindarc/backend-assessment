@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="minarc_feedgenerator" translate="label" type="text" sortOrder="16" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Feed Generator</label>
+            <tab>general</tab>
+            <resource>MindArc_FeedGenerator::FeedGenerator</resource>
+            <group id="setting" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Feed Generator View</label>
+                <field id="button" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Press the button to generate the feed</label>
+                    <frontend_model>MindArc\FeedGenerator\Block\Adminhtml\Config\View</frontend_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
