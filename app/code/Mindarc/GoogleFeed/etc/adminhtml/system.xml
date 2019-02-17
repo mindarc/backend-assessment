@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Mindarc Pty Ltd.
+ *
+ * @category    Mindarc
+ * @package     Mindarc_GoogleFeed
+ * @author      Mindarc Team <hello@mindarc.com.au>
+ * @copyright   Copyright (c) 2019 Mindarc Pty Ltd. (https://www.mindarc.com.au/)
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="mindarc" translate="label" sortOrder="100">
+            <label>Mindarc</label>
+        </tab>
+        <section id="google_feed" translate="label" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Google Feed</label>
+            <tab>mindarc</tab>
+            <resource>Mindarc_GoogleFeed::configuration</resource>
+            <group id="generate" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Generation Settings</label>
+                <field id="enabled" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="recipients" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Error Email Recipients</label>
+                    <comment>Comma separated email addressed to receive error emails.</comment>
+                </field>
+                <field id="identity" translate="label" type="select" sortOrder="50" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Error Email Sender</label>
+                    <source_model>Magento\Config\Model\Config\Source\Email\Identity</source_model>
+                </field>
+                <field id="template" translate="label comment" type="select" sortOrder="60" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Error Email Template</label>
+                    <comment>Email template chosen based on theme fallback when "Default" option is selected.</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Email\Template</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
