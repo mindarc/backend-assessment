@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Mindarc Pty Ltd.
+ *
+ * @category    Mindarc
+ * @package     Mindarc_GoogleFeed
+ * @author      Mindarc Team <hello@mindarc.com.au>
+ * @copyright   Copyright (c) 2019 Mindarc Pty Ltd. (https://www.mindarc.com.au/)
+ */
+ -->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="editor"/>
+    <body>
+        <referenceContainer name="content">
+            <block name="feed.preview.content" template="Mindarc_GoogleFeed::profile/preview.phtml">
+                <arguments>
+                    <argument name="viewModel" xsi:type="object">Mindarc\GoogleFeed\Block\Adminhtml\Profile\Preview</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+    </body>
+</page>
