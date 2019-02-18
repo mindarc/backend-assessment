@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Mindarc Pty Ltd.
+ *
+ * @category    Mindarc
+ * @package     Mindarc_GoogleFeed
+ * @author      Mindarc Team <hello@mindarc.com.au>
+ * @copyright   Copyright (c) 2019 Mindarc Pty Ltd. (https://www.mindarc.com.au/)
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">   
+    <menu>
+        <add id="Mindarc_Core::main_menu" title="Mindarc" module="Mindarc_GoogleFeed" sortOrder="70" resource="Mindarc_Core::main_menu" />
+        <add id="Mindarc_GoogleFeed::google"
+             title="Google Feed"
+             module="Mindarc_GoogleFeed"
+             sortOrder="100"
+             parent="Mindarc_Core::main_menu"
+             resource="Mindarc_GoogleFeed::google"/>
+        <add id="Mindarc_GoogleFeed::configuration"
+             title="Configuration"
+             module="Mindarc_GoogleFeed"
+             sortOrder="10"
+             parent="Mindarc_GoogleFeed::google"
+             action="adminhtml/system_config/edit/section/google_feed"
+             resource="Mindarc_GoogleFeed::configuration"/>
+        <add id="Mindarc_GoogleFeed::profiles"
+             title="Feed Profiles"
+             module="Mindarc_GoogleFeed"
+             sortOrder="20"
+             parent="Mindarc_GoogleFeed::google"
+             action="google/profile/index"
+             resource="Mindarc_GoogleFeed::profiles"/>
+    </menu>
+</config>
