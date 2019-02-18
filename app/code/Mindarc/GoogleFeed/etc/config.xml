@@ -15,6 +15,9 @@
             <generate>
                 <enabled>1</enabled>
             </generate>
+            <converter>
+                <api_key>9efcebcad9f3d4134aaa</api_key>
+            </converter>
         </google_feed>
     </default>
 </config>

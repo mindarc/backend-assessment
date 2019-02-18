@@ -100,6 +100,11 @@ class Profile extends \Magento\Framework\Model\AbstractModel
                 'cdata' => 0
             ],
             [
+                'element' => 'g:converted_price',
+                'magento' => 'price',
+                'cdata' => 0
+            ],
+            [
                 'element' => 'g:condition',
                 'magento' => '',
                 'default' => 'New',
