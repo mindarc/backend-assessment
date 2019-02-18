@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="interactive_geoip" translate="label" type="text" sortOrder="16" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Geo IP</label>
+            <tab>general</tab>
+            <resource>Summa_Paypal::lco_paypal</resource>
+            <group id="setting" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Geo IP Settings</label>
+                <field id="file" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Databasbe path</label>
+                </field>
+                <field id="simulationmode" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable IP Simulation</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="myip" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>My new IP address</label>
+                    <comment>Insert a new Ip for simulation mode</comment>
+                    <depends>
+                        <field id="interactive_geoip/setting/simulationmode">1</field>
+                    </depends>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
