@@ -91,7 +91,7 @@ class FeedGenerator
     /**
      * @var \Magento\Framework\Pricing\Helper\Data
      */
-    private $priceHelper;
+    private $currency;
 
     /**
      * @var \Magento\Framework\Mail\Template\TransportBuilder
@@ -118,6 +118,14 @@ class FeedGenerator
      */
     private $indexerState;
 
+
+    private $converter;
+
+    /**
+     * @var float
+     */
+    private $conversionRate;
+
     /**
      * FeedGenerator constructor.
      * @param Profile $profile
@@ -128,12 +136,13 @@ class FeedGenerator
      * @param \Magento\Config\Model\Config\Reader\Source\Deployed\DocumentRoot $documentRoot
      * @param \Magento\Store\Model\StoreManagerInterface $storeManager
      * @param ResourceModel\Catalog\ProductFactory $productFactory
-     * @param \Magento\Framework\Pricing\Helper\Data $priceHelper
+     * @param \Magento\Framework\Pricing\Helper\Data $currency
      * @param \Magento\Framework\Mail\Template\TransportBuilder $transportBuilder
      * @param \Magento\Framework\App\Filesystem\DirectoryList $directoryList
      * @param \Magento\Framework\Filesystem\Io\File $file
      * @param Profile\Source\Status $status
      * @param \Magento\Catalog\Model\Indexer\Product\Flat\State $indexerState
+     * @param \Mindarc\GoogleFeed\Service\CurrencyConverter $converter
      * @throws \Magento\Framework\Exception\FileSystemException
      */
     public function __construct(
@@ -145,12 +154,13 @@ class FeedGenerator
         \Magento\Config\Model\Config\Reader\Source\Deployed\DocumentRoot $documentRoot,
         \Magento\Store\Model\StoreManagerInterface $storeManager,
         \Mindarc\GoogleFeed\Model\ResourceModel\Catalog\ProductFactory $productFactory,
-        \Magento\Framework\Pricing\Helper\Data $priceHelper,
+        \Magento\Directory\Model\Currency $currency,
         \Magento\Framework\Mail\Template\TransportBuilder $transportBuilder,
         \Magento\Framework\App\Filesystem\DirectoryList $directoryList,
         \Magento\Framework\Filesystem\Io\File $file,
         \Mindarc\GoogleFeed\Model\Profile\Source\Status $status,
-        \Magento\Catalog\Model\Indexer\Product\Flat\State $indexerState
+        \Magento\Catalog\Model\Indexer\Product\Flat\State $indexerState,
+        \Mindarc\GoogleFeed\Service\CurrencyConverter $converter
     ) {
         $this->profile = $profile;
         $this->appState = $AppState;
@@ -159,12 +169,13 @@ class FeedGenerator
         $this->directory = $filesystem->getDirectoryWrite($documentRoot->getPath());
         $this->storeManager = $storeManager;
         $this->productFactory = $productFactory;
-        $this->priceHelper = $priceHelper;
+        $this->currency = $currency;
         $this->transportBuilder = $transportBuilder;
         $this->directoryList = $directoryList;
         $this->file = $file;
         $this->status = $status;
         $this->indexerState = $indexerState;
+        $this->converter = $converter;
     }
 
     /**
@@ -195,6 +206,9 @@ class FeedGenerator
     public function process($profileId = null)
     {
         $errors = [];
+
+        // determine the currency conversion rate at the beginning, so can use for each product price
+        $this->conversionRate = $this->converter->getRate('AUD', 'USD');
 
         // if feed generation is disabled by configurations
         if (!$this->isGenerationEnabled()) {
@@ -430,7 +444,18 @@ class FeedGenerator
                                 break;
                             case 'g:price':
                                 // Price format
-                                $value = $this->priceHelper->currencyByStore($value, $product['store_id'], true, false);
+                                $value = $this->currency->format($value, [], false);
+                                break;
+                            case 'g:converted_price':
+                                if (empty($this->conversionRate)) { // if no conversion rate, omit the element
+                                    continue;
+                                }
+                                // Price convert and format
+                                $value = $this->currency->format(
+                                    $this->converter->convert($value, $this->conversionRate),
+                                    [],
+                                    false
+                                );
                                 break;
                             case 'g:image_link':
                                 $images = $product->getImages();
