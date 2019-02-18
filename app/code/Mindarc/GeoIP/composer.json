@@ -1,0 +1,24 @@
+{
+  "name": "mindarc/module-geoip",
+  "description": "Mindarc Magento 2 module for IP restrictions",
+  "require": {
+    "php": "~5.5.0|~5.6.0|~7.0.0|~7.1.0",
+    "magento/module-config": "*",
+    "magento/framework": "*",
+    "geoip/geoip": "~1.16"
+  },
+  "type": "magento2-module",
+  "version": "100.23.0",
+  "license": [
+    "OSL-3.0",
+    "AFL-3.0"
+  ],
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "Mindarc\\GeoIP\\": ""
+    }
+  }
+}

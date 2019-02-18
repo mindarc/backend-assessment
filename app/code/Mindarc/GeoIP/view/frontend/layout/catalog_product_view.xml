@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Mindarc Pty Ltd.
+ *
+ * @category    Mindarc
+ * @package     Mindarc_GeoIP
+ * @author      Mindarc Team <hello@mindarc.com.au>
+ * @copyright   Copyright (c) 2019 Mindarc Pty Ltd. (https://www.mindarc.com.au/)
+ */
+-->
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <block name="product.geo.info" template="Mindarc_GeoIP::product/view/info.phtml" before="-" cacheable="false">
+                <arguments>
+                    <argument name="viewModel" xsi:type="object">Mindarc\GeoIP\Block\Product\View\Info</argument>
+                </arguments>
+                <block class="Magento\Cms\Block\Block" name="product.geo.info.us">
+                    <arguments>
+                        <argument name="block_id" xsi:type="string">product_information_us</argument>
+                    </arguments>
+                </block>
+                <block class="Magento\Cms\Block\Block" name="product.geo.info.global">
+                    <arguments>
+                        <argument name="block_id" xsi:type="string">product_information_global</argument>
+                    </arguments>
+                </block>
+            </block>
+        </referenceContainer>
+    </body>
+</page>
