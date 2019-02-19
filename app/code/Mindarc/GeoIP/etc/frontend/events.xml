@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Mindarc Pty Ltd.
+ *
+ * @category    Mindarc
+ * @package     Mindarc_GeoIP
+ * @author      Mindarc Team <hello@mindarc.com.au>
+ * @copyright   Copyright (c) 2019 Mindarc Pty Ltd. (https://www.mindarc.com.au/)
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="controller_action_predispatch">
+        <observer name="controller_action_predispatch_gioip_restrict" instance="Mindarc\GeoIP\Observer\ControllerActionPreDispatchObserver" />
+    </event>
+</config>

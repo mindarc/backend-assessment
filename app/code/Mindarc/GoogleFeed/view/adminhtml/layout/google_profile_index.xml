@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Mindarc Pty Ltd.
+ *
+ * @category    Mindarc
+ * @package     Mindarc_GoogleFeed
+ * @author      Mindarc Team <hello@mindarc.com.au>
+ * @copyright   Copyright (c) 2019 Mindarc Pty Ltd. (https://www.mindarc.com.au/)
+ */
+ -->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="styles"/>
+    <body>
+        <referenceContainer name="content">
+            <uiComponent name="google_profile_listing"/>
+        </referenceContainer>
+    </body>
+</page>

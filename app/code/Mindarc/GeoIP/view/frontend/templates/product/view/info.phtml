@@ -1,0 +1,26 @@
+<?php
+/**
+ * Mindarc Pty Ltd.
+ *
+ * @category    Mindarc
+ * @package     Mindarc_GeoIP
+ * @author      Mindarc Team <hello@mindarc.com.au>
+ * @copyright   Copyright (c) 2019 Mindarc Pty Ltd. (https://www.mindarc.com.au/)
+ */
+
+/** @var $viewModel \Mindarc\GeoIP\Block\Product\View\Info */
+$viewModel = $block->getData('viewModel');
+$countryCode = $viewModel->getCountryCode();
+if (!empty($countryCode)):
+?>
+    <div>
+        <span><?= __('Country Code: %1', $viewModel->getCountryCode()) ?></span>
+        <span>
+            <?php if ($viewModel->isUsUser()): ?>
+                <?= $block->getChildHtml('product.geo.info.us') ?>
+            <?php else: ?>
+                <?= $block->getChildHtml('product.geo.info.global') ?>
+            <?php endif; ?>
+        </span>
+    </div>
+<?php endif; ?>

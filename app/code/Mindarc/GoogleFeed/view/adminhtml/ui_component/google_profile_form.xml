@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Mindarc Pty Ltd.
+ *
+ * @category    Mindarc
+ * @package     Mindarc_GoogleFeed
+ * @author      Mindarc Team <hello@mindarc.com.au>
+ * @copyright   Copyright (c) 2019 Mindarc Pty Ltd. (https://www.mindarc.com.au/)
+ */
+ -->
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">google_profile_form.google_profile_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">General Information</item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+    <settings>
+        <buttons>
+            <button name="save_and_continue" class="Mindarc\GoogleFeed\Block\Adminhtml\Profile\Edit\SaveAndContinueButton"/>
+            <button name="save" class="Mindarc\GoogleFeed\Block\Adminhtml\Profile\Edit\SaveButton"/>
+            <button name="delete" class="Mindarc\GoogleFeed\Block\Adminhtml\Profile\Edit\DeleteButton"/>
+            <button name="back" class="Mindarc\GoogleFeed\Block\Adminhtml\Profile\Edit\BackButton"/>
+        </buttons>
+        <namespace>google_profile_form</namespace>
+        <dataScope>data</dataScope>
+        <deps>
+            <dep>google_profile_form.google_profile_form_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="google_profile_form_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <settings>
+            <submitUrl path="google/profile/save"/>
+        </settings>
+        <dataProvider class="Mindarc\GoogleFeed\Model\Profile\DataProvider" name="google_profile_form_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>entity_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <fieldset name="general">
+        <settings>
+            <collapsible>false</collapsible>
+            <label translate="true">Feed Information</label>
+        </settings>
+        <!--<field name="entity_id" formElement="input">-->
+            <!--<argument name="data" xsi:type="array">-->
+                <!--<item name="config" xsi:type="array">-->
+                    <!--<item name="source" xsi:type="string">block</item>-->
+                <!--</item>-->
+            <!--</argument>-->
+            <!--<settings>-->
+                <!--<dataType>text</dataType>-->
+                <!--<visible>false</visible>-->
+                <!--<dataScope>entity_id</dataScope>-->
+            <!--</settings>-->
+        <!--</field>-->
+        <field name="status" sortOrder="10" formElement="checkbox">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">block</item>
+                    <item name="default" xsi:type="number">1</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>boolean</dataType>
+                <label translate="true">Enabled</label>
+                <dataScope>status</dataScope>
+            </settings>
+            <formElements>
+                <checkbox>
+                    <settings>
+                        <valueMap>
+                            <map name="false" xsi:type="number">0</map>
+                            <map name="true" xsi:type="number">1</map>
+                        </valueMap>
+                        <prefer>toggle</prefer>
+                    </settings>
+                </checkbox>
+            </formElements>
+        </field>
+        <field name="store_id" sortOrder="20" formElement="select">
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">Send From</label>
+                <dataScope>store_id</dataScope>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options class="Magento\Store\Model\System\Store"/>
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+        <field name="profile_name" sortOrder="30" formElement="input">
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">Profile Name</label>
+                <visible>true</visible>
+            </settings>
+        </field>
+        <field name="filename" sortOrder="40" formElement="input">
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">Feed File Name</label>
+                <visible>true</visible>
+                <notice translate="true">Name of the feed file without the .xml extension.</notice>
+            </settings>
+        </field>
+    </fieldset>
+</form>
