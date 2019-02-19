@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Mindarc Pty Ltd.
+ *
+ * @category    Mindarc
+ * @package     Mindarc_GeoIP
+ * @author      Mindarc Team <hello@mindarc.com.au>
+ * @copyright   Copyright (c) 2019 Mindarc Pty Ltd. (https://www.mindarc.com.au/)
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <geoip>
+            <restriction>
+                <enabled>1</enabled>
+                <countries>RU,CN</countries>
+            </restriction>
+        </geoip>
+    </default>
+</config>
