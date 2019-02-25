@@ -20,6 +20,9 @@
                     <label>Service Key</label>
                     <comment>Go to https://ipstack.com/ to get an API key</comment>
                 </field>
+                <field id="restrict_countries" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Restrict Countries</label>
+                </field>
             </group>
         </section>
     </system>
