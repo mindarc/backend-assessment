@@ -61,6 +61,11 @@ class Generator implements GeneratorInterface
     protected $directory;
 
     /**
+     * @var \Mindarc\Feed\CurrencyService\ServiceHelper
+     */
+    protected $serviceHelper;
+
+    /**
      * @var \Magento\Framework\Filesystem\File\WriteInterface
      */
     protected $stream;
@@ -80,6 +85,7 @@ class Generator implements GeneratorInterface
      * @param \Magento\Catalog\Model\Product\Visibility $productVisibility
      * @param \Magento\Catalog\Helper\Image $catalogImageHelper
      * @param \Magento\Framework\Filesystem $filesystem
+     * @param \Mindarc\Feed\CurrencyService\ServiceHelper $serviceHelper
      */
     public function __construct(
         StoreRepositoryInterface $storeRepository,
@@ -89,7 +95,8 @@ class Generator implements GeneratorInterface
         \Magento\Catalog\Model\Product\Attribute\Source\Status $productStatus,
         \Magento\Catalog\Model\Product\Visibility $productVisibility,
         \Magento\Catalog\Helper\Image $catalogImageHelper,
-        \Magento\Framework\Filesystem $filesystem
+        \Magento\Framework\Filesystem $filesystem,
+        \Mindarc\Feed\CurrencyService\ServiceHelper $serviceHelper
     ) {
         $this->storeRepository = $storeRepository;
         $this->storeManager = $storeManager;
@@ -99,6 +106,7 @@ class Generator implements GeneratorInterface
         $this->productVisibility = $productVisibility;
         $this->catalogImageHelper = $catalogImageHelper;
         $this->directory = $filesystem->getDirectoryWrite(DirectoryList::MEDIA);
+        $this->serviceHelper = $serviceHelper;
     }
 
     /**
@@ -170,6 +178,7 @@ class Generator implements GeneratorInterface
         $row .= '<g:image_link>' . $this->getProductImage($product) . '</g:image_link>' . PHP_EOL;
         $row .= '<g:price>' . $product->getPrice() . '</g:price>' . PHP_EOL;
         $row .= '<g:price>' . $product->getPrice() . '</g:price>' . PHP_EOL;
+        $row .= '<g:converted_price>' . $this->serviceHelper->convertPrice($product->getPrice()) . '</g:converted_price>' . PHP_EOL;
         $row .= '</item>' . PHP_EOL;
         $this->getStream()->write($row);
     }
