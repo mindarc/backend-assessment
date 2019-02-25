@@ -1,0 +1,26 @@
+{
+  "name": "mindarc/feed",
+  "description": "Google Feed Generator",
+  "type": "magento2-module",
+  "version": "1.0.1",
+  "extra": {
+    "map": [
+      [
+        "*",
+        "Mindarc/Feed"
+      ]
+    ]
+  },
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "Mindarc\\Feed\\": ""
+    }
+  },
+  "require": {
+    "php": "~7.0.0",
+    "magento/magento-composer-installer": "*"
+  }
+}

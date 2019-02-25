@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Copyright © pmk, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Mindarc_Feed:etc/feed.xsd">
+    <feed id="google" class="Mindarc\Feed\GoogleFeed\Generator">
+        <feedprefx>google</feedprefx>
+        <title translate="true">Google Feed Generator</title>
+        <description translate="true">Generate google feeds to each Magento stores</description>
+    </feed>
+</config>
