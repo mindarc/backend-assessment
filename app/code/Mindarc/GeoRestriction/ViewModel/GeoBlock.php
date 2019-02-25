@@ -56,4 +56,12 @@ class GeoBlock implements ArgumentInterface
         }
         return $this->userCountry;
     }
+
+    /**
+     * @return bool
+     */
+    public function isCountryUs() : bool
+    {
+        return $this->getUserCountry() == 'US';
+    }
 }

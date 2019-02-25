@@ -4,3 +4,11 @@
 $viewModel = $block->getData('viewModel');
 ?>
 <p><?= sprintf('%s: %s',__('User Country is'),$viewModel->getUserCountry());?></p>
+
+<p>
+<?php if($viewModel->isCountryUs()):?>
+    <?= $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('us-block')->toHtml();?>
+<?php else: ?>
+    <?= $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('global-block')->toHtml() ?>
+<?php endif;?>
+</p>
