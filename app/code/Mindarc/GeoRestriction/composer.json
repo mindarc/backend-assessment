@@ -1,0 +1,27 @@
+{
+  "name": "mindarc/geo-restriction",
+  "description": "Geo Restriction",
+  "type": "magento2-module",
+  "version": "1.0.1",
+  "extra": {
+    "map": [
+      [
+        "*",
+        "Mindarc/GeoRestriction"
+      ]
+    ]
+  },
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "Mindarc\\Feed\\": ""
+    }
+  },
+  "require": {
+    "php": "~7.0.0",
+    "magento/magento-composer-installer": "*",
+    "divineomega/php-geolocation": "*"
+  }
+}
