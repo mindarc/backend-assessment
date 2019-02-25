@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © pmk, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="mindarc" translate="label" sortOrder="10">
+            <label>Mindarc</label>
+        </tab>
+        <section id="geo_section" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Geo Restriction</label>
+            <tab>mindarc</tab>
+            <resource>Mindarc_GeoRestriction::config</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <field id="service_key" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Service Key</label>
+                    <comment>Go to https://ipstack.com/ to get an API key</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

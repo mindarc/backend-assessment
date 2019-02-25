@@ -1,0 +1,6 @@
+<?php
+/** @var \Magento\Framework\View\Element\Template $block */
+/** @var \Mindarc\GeoRestriction\ViewModel\GeoBlock $viewModel */
+$viewModel = $block->getData('viewModel');
+?>
+<p><?= sprintf('%s: %s',__('User Country is'),$viewModel->getUserCountry());?></p>
