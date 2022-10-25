@@ -1,0 +1,22 @@
+{
+    "name": "mindarc/module-geoip",
+    "description": "Mindarc Backend Assessment Module",
+    "type": "magento2-module",
+    "license": "GPL-3.0",
+    "authors": [
+        {
+            "name": "Ian Ulita",
+            "email": "darylianulita@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Mindarc\\GeoIp\\": ""
+        }
+    }
+}
