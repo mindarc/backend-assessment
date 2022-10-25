@@ -23,6 +23,12 @@
 						CN: 1.0.3.255
 					</comment>
 				</field>
+				<field id="blocked_countries" type="text" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+					<label>Blocked Countries</label>
+					<comment>
+						Block Countries by country codes (comma separated e.g. RU,CN)
+					</comment>
+				</field>
 			</group>
 		</section>
 	</system>

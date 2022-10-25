@@ -4,6 +4,7 @@
         <geoip>
             <settings>
                 <api_url>http://ip-api.com/json/</api_url>
+                <blocked_countries>RU,CN</blocked_countries>
             </settings>
         </geoip>
     </default>

@@ -17,6 +17,7 @@
    Admin configuration for IP Override has been added for easier testing purposes.
    Static block and country code is displayed in the product-info-main on the Product Page.
 
+   Added Blocked Countries config in the admin to block traffic based on country codes.
 
    ## Installation
    \* = in production please use the `--keep-generated` option
@@ -30,4 +31,5 @@
 
    - API URL (geoip/settings/api_url)
    - IP Override (geoip/settings/ip_override)
+   - Blocked Countries (geoip/settings/blocked_countries)
 

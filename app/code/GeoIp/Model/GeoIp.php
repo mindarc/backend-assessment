@@ -11,6 +11,7 @@ class GeoIp
 {
     const API_URL = "geoip/settings/api_url";
     const IP_OVERRIDE = "geoip/settings/ip_override";
+    const BLOCKED_COUNTRIES = "geoip/settings/blocked_countries";
 
     /**
      * curlClient
@@ -76,6 +77,18 @@ class GeoIp
     {
         return $this->scopeConfigInterface->getValue(self::IP_OVERRIDE);
     }
+
+    
+    /**
+     * getBlockedCountries
+     *
+     * @return array
+     */
+    public function getBlockedCountries() : array
+    {
+        return explode(",",$this->scopeConfigInterface->getValue(self::BLOCKED_COUNTRIES));
+    }
+
     /**
      * getLocationData
      *
