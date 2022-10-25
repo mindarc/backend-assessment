@@ -1,0 +1,28 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+	<system>
+		<tab id="mindarc" translate="label" sortOrder="999">
+			<label>Mindarc</label>
+		</tab>
+		<section id="googlefeed" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+			<label>Google Feed</label>
+			<tab>mindarc</tab>
+			<resource>Mindarc_GoogleFeed::config_mindarc_googlefeed</resource>
+			<group id="settings" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+				<label>Configuration</label>
+				<field id="feed_filename" type="text" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+					<label>Feed Filename</label>
+					<comment>The feed filename you register in your Google Merchant Center account must match the name you assign to your file.</comment>
+				</field>
+				<field id="feed_title" type="text" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+					<label>Feed Title</label>
+					<comment/>
+				</field>
+				<field id="feed_description" type="text" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+					<label>Feed Description</label>
+					<comment/>
+				</field>
+			</group>
+		</section>
+	</system>
+</config>
