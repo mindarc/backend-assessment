@@ -14,6 +14,9 @@ This module generates a google shopping feed from all available products in the 
 Format is from https://support.google.com/merchants/answer/160589?hl=en#
 
 Note: shipping settings were omitted as this is better configured through here: https://support.google.com/merchants/answer/6069284
+
+Update: Added controller that displays XML data as an array. Can be accessed via <magento_url>/googlefeed/feed
+
 ## Installation
 \* = in production please use the `--keep-generated` option
 

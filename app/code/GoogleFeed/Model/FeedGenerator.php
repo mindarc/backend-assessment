@@ -74,16 +74,33 @@ class FeedGenerator
         $this->logger->info($feed);
 
     }
-
+    
+    /**
+     * saveGoogleFeed
+     *
+     * @param  mixed $feed
+     * @return void
+     */
     private function saveGoogleFeed($feed)
     {
         try {
-            $path = $this->dir->getPath('pub');
-            $file = $path . "/" . $this->getFeedFileName();
+            $file = $this->getSavePath();
             file_put_contents($file, $feed);
         } catch (Exception $e) {
             $this->logger->error('Error message', ['exception' => $e]);
         }
+    }
+    
+    /**
+     * getSavePath
+     *
+     * @return string
+     */
+    public function getSavePath() : string
+    {
+        $path = $this->dir->getPath('pub');
+        $file = $path . "/" . $this->getFeedFileName();
+        return $file;
     }
     
     /**
@@ -121,10 +138,11 @@ class FeedGenerator
      */
     private function productFormat ($product) : string
     {
+        $productDescription = $this->escaper->escapeHtml($product->getDescription() ? $product->getDescription() : '');
         $productData = '<item>';
         $productData .= '<g:id>' . $product->getSku() . '</g:id>';
-        $productData .= '<g:title>' . $product->getName() . '</g:title>';(
-        $productData .= '<g:description>' . $this->escaper->escapeHtml($product->getDescription() ? $product->getDescription() : '') . '</g:description>';
+        $productData .= '<g:title>' . $product->getName() . '</g:title>';
+        $productData .= '<g:description>' . $productDescription . '</g:description>';
         $productData .= '<g:link>' . $product->getProductUrl() . '</g:link>';
         $productData .= '<g:image_link>' . $this->getProductImageUrl($product) . '</g:image_link>';
         $productData .= '<g:condition>new</g:condition>';
