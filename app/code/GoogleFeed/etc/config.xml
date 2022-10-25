@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+	<default>
+		<googlefeed>
+			<settings>
+				<feed_filename>shopping_feed.xml</feed_filename>
+				<feed_description>Sample Product Feed - All Products</feed_description>
+				<feed_title>Sample Product Feed - Sample Store</feed_title>
+			</settings>
+		</googlefeed>
+	</default>
+</config>
