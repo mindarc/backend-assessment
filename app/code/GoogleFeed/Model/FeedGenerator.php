@@ -15,6 +15,7 @@ use Magento\CatalogInventory\Api\StockRegistryInterface;
 use Magento\CatalogInventory\Api\Data\StockItemInterface;
 use Magento\Framework\App\Filesystem\DirectoryList;
 use Psr\Log\LoggerInterface;
+use Mindarc\GoogleFeed\Model\Converter;
 
 class FeedGenerator
 {    
@@ -39,7 +40,8 @@ class FeedGenerator
         ProductRepository $productRepository,
         DirectoryList $dir,
         Escaper $escaper,
-        LoggerInterface $logger
+        LoggerInterface $logger,
+        Converter $converter
     ) {
         $this->filterBuilder = $filterBuilder;
         $this->filterGroup = $filterGroup;
@@ -54,6 +56,7 @@ class FeedGenerator
         $this->visibility = $visibility;
         $this->logger = $logger;
         $this->escaper = $escaper;
+        $this->converter = $converter;
     }
         
     /**
@@ -148,12 +151,17 @@ class FeedGenerator
         $productData .= '<g:condition>new</g:condition>';
         $productData .= '<g:availability>' . $this->getStockStatus($product) . '</g:availability>';
         $productData .= '<g:price>' . $this->getProductPriceString($product) . '</g:price>';
+        $productData .= '<g:converted_price>' . $this->convertPrice($product) . '</g:converted_price>';
 
         $productData .= '</item>';
         return $productData;
     }
 
     
+    private function convertPrice($product) {
+        $convertedPrice = $this->converter->convertCurrency($product->getFinalPrice(), $this->storeManagerInterface->getStore()->getCurrentCurrency()->getCode(), "USD");
+        return $convertedPrice;
+    }
     /**
      * feedHeaders
      *
