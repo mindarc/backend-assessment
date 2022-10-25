@@ -1,0 +1,29 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+	<system>
+		<tab id="mindarc" translate="label" sortOrder="999">
+			<label>Mindarc</label>
+		</tab>
+		<section id="geoip" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+			<label>GeoIP</label>
+			<tab>mindarc</tab>
+			<resource>Mindarc_GeoIp::config_mindarc_geoip</resource>
+			<group id="settings" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+				<label>Configuration</label>
+				<field id="api_url" type="text" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+					<label>API URL</label>
+					<comment/>
+				</field>
+				<field id="ip_override" type="text" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+					<label>IP Override</label>
+					<comment>
+						Used to override user's IP Address (for testing purposes) &lt;br&gt;
+						US: 69.162.81.155 &lt;br&gt;
+						RU: 103.136.43.255 &lt;br&gt;
+						CN: 1.0.3.255
+					</comment>
+				</field>
+			</group>
+		</section>
+	</system>
+</config>
